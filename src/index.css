@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: black;
+  font-family: 'PixelOperator8', sans-serif;
+  color: #fff;
+}
+
+@font-face {
+  font-family: 'PixelOperator8';
+  src: url('./assets/font/PixelOperator8.ttf') ;
+  /* Add more font formats if necessary */
+}
+ 
