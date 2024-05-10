@@ -1,49 +1,50 @@
-import Aboutme from './component/aboutme';
+import { useState } from 'react'
+import Aboutme from './component/aboutme'
 import Backline from './component/backline'
-import Moreme from './component/moreme';
+import Hero from './component/hero'
+import Moreme from './component/moreme'
 import Navbar from './component/navbar'
-import { ReactTyped } from "react-typed";
+import Project from './component/project'
 
 
 
 function App() {
+  const [showcomp1, setcomp1] = useState(true);
+
+  const handletoggle = () => {
+    setcomp1(!showcomp1)
+  };
 
   return (
-    <>
-      <Backline/>
+    <div className=''>
+      <Backline />
       <Navbar />
-      <div className="flex flex-col  justify-center items-center">
-        <section className="h-screen w-full flex items-center justify-center">
-          <div className=" place-content-center ">
-            <ReactTyped
-              className="text-white text-lg"
-              strings={['<span style="color: orange">://</span> Hello! I am <span style="color: green">K. N Piyumina</span>', '> welcome to my Portfolio']}
-              typeSpeed={100}
-              loop
-              cursorChar="_"
-            />
-          </div>
-        </section>
-        <section id='who' className="w-full  h-screen items-center justify-center">
-          <h1 className='ml-10 text-orange-600 my-5 text-xl'>{">"} Who _</h1>
-          <div className=" place-content-center">
-            <div className='flex w-full  items-center justify-center' >
-                <Aboutme />
-            </div>
-          </div>
-        </section>
-        <section id='who1' className="w-full  h-screen items-center justify-center">
-          <h1 className='ml-10 text-orange-600 my-5 text-xl'>{">"} Who _</h1>
-          <div className=" place-content-center">
-            <div className='flex w-full  items-center justify-center' >
-                <Moreme/>
-            </div>
-          </div>
-        </section>
-
-
+      <div className='felx justify-center items-center'>
+        <div className='w-full'>
+          <Hero />
+        </div>
       </div>
-    </>
+
+      <div id='whoone' className='flex justify-center items-center'>
+        <div className='w-full'>
+          <h1 className='ml-10 my-10 text-orange-600 text-3xl'>{">"} who _</h1>
+          {
+            showcomp1 ? (
+              <Moreme onclick={handletoggle} />
+            ) : (
+              <Aboutme onclick={handletoggle} />
+            )
+          }
+        </div>
+      </div>
+      <div className='flex justify-center items-center mt-20'>
+        <div className='w-full'>
+          <h1 className='ml-10 my-10 text-orange-600 text-3xl'>{">"} Projects_</h1>
+          <Project />
+        </div>
+      </div>
+
+    </div>
 
   )
 }
